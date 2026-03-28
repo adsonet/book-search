@@ -1,12 +1,20 @@
-# Javascript Code Test
+# Book Search API
 
-`BookSearchApiClient` is a simple class that makes a call to a http API to retrieve a list of books and return them.
+## Overview
 
-You need to refactor the `BookSearchApiClient` class, and demonstrate in `example-client.js` how it would be used. Refactor to what you consider to be production ready code. You can change it in anyway you would like and can use javascript or typescript.
+The **Book Search API** is a modular backend service designed to fetch, normalize, and aggregate book data from multiple third-party providers. This service abstracts away provider-specific API differences, supports multiple query types (author, publisher, year), and returns a consistent JSON structure.  
 
-Things you will be asked about:
+The solution is designed for **scalability, maintainability, and testability**, following modern engineering practices and production-ready patterns.
 
-1. How could you easily add other book seller APIs in the the future
-2. How would you manage differences in response payloads between different APIs without needing to make future changes to whatever code you have in example-client.js
-3. How would you implement different query types for example: by publisher, by year published etc
-4. How your code would be tested
+---
+
+## Architectural Design
+
+The Book Search API has been re-written as a modular backend service for fetching and normalizing book data from multiple third-party providers. This service abstracts away provider-specific API differences, supports multiple query types (author, publisher, year), and returns a consistent JSON structure. Each provider implements a common interface and handles its own query construction and response mapping (JSON or XML), enabling loose coupling and easy extensibility.
+
+A unified parser layer was implemented to ensure all provider responses are converted into a consistent JSON format, so consumers would never need to handle provider-specific formats. The BookSearchApiClientService now acts as a Facade, exposing simple methods like getBooksByAuthor, getBooksByPublisher, and getBooksByYear while hiding the underlying complexity.
+
+Caching at the service layer reduces repeated API calls and improves performance using a hybrid of in-memory storage and redis service for a production grade microservice. The in-memory caching is suitable to testing, and while redis cache is efficient enough in production, the hybrid caching is even more suitable for improved production efficiency. The in-memory storage uses short TTL and falls back on redis at expiry, leaving redis also to update the data by calling the API whenever it expires, reducing too frequent call to provider APIs. Concurrent queries to providers' API improve performance in the multi-provider setups.
+
+The architecture follows Provider-Adapter, Facade, Parser patterns, supporting future expansion with minimal changes. Extensive unit and integration tests (mocking HTTP calls) ensure correctness and maintainability. TypeScript enforces strong typing and safety, and the solution is production-ready, and test-driven.
+
