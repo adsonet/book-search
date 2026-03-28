@@ -20,7 +20,7 @@
         "node": ">=22.12.0"
     },
     "keywords": [],
-    "author": "Kredi Developers",
+    "author": "Adebayo Olukunle",
     "license": "ISC",
     "devDependencies": {
         "@faker-js/faker": "^9.3.0",
