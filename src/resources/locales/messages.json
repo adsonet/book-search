@@ -1,0 +1,14 @@
+{
+    "INTERNAL_SERVER_ERROR": "An unexpected error occurred on the server. Please try again later.",
+    "ROUTE_NOT_FOUND": "The requested route could not be found.",
+    "RESOURCE_NOT_FOUND": "The requested resource does not exist.",
+    "FIELD_ALREADY_EXISTS": "The {field} you provided already exists.",
+    "FIELD_ALREADY_VERIFIED": "The {field} has already been verified.",
+    "FIELD_NOT_VERIFIED": "The {field} has not been verified yet.",
+    "INVALID_FIELD": "The provided {field} is invalid.",
+    "EMPTY_FIELD": "The {field} must not be empty.",
+    "FIELD_NOT_FOUND": "The {field} could not be found.",
+    "FIELD_DOES_NOT_EXIST": "{field} does not exist.",
+    "INVALID_PARAMETER": "{field} is invalid.",
+    "REQUIRED_PARAMETER": "{field} is required."
+}

@@ -1,0 +1,53 @@
+{
+    "ts-node": {
+        "transpileOnly": true,
+        "files": true,
+    },
+    "compilerOptions": {
+        "lib": [
+            "es6"
+        ],
+        "target": "es2022",
+        "module": "commonjs",
+        "rootDir": ".",
+        "outDir": "build",
+        "esModuleInterop": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "emitDecoratorMetadata": true,
+        // for TypeORM
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        // for TypeORM
+        "strictPropertyInitialization": false,
+        "baseUrl": ".",
+        "paths": {
+            "@app/*": [
+                "src/*"
+            ],
+            "@config/*": [
+                "src/config/*"
+            ],
+            "@tests/*": [
+                "tests/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "tests/**/*.ts",
+        "src/config/**/*.ts",
+        "config/**/*.ts",
+        "config/**/*.js",
+        "config/**/*.json"
+    ],
+    "exclude": [
+        "node_modules",
+        ".vscode"
+    ]
+}

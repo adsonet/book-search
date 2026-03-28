@@ -1,0 +1,87 @@
+{
+    "name": "adebayo-edf-book-search",
+    "version": "1.0.0",
+    "description": "EDF Book Search API",
+    "scripts": {
+        "test": "NODE_ENV=test jest",
+        "build": "rm -rf ./build && tsc && tsc-alias -p ./tsconfig.json",
+        "build:prod": "rm -rf ./build && tsc --project ./tsconfig-prod.json && tsc-alias -p ./tsconfig-prod.json",
+        "build:dev": "rm -rf ./build && tsc",
+        "start": "npm run build && node build/src/server.js",
+        "dev": "[ -d ./build ] && rm -rf ./build || echo 'build directory not found'; nodemon",
+        "typeorm": "typeorm-ts-node-esm",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "format": "prettier --write",
+        "prettier:check": "prettier --check",
+        "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi"
+    },
+    "engines": {
+        "node": ">=22.12.0"
+    },
+    "keywords": [],
+    "author": "Kredi Developers",
+    "license": "ISC",
+    "devDependencies": {
+        "@faker-js/faker": "^9.3.0",
+        "@types/bcrypt": "^5.0.2",
+        "@types/cors": "^2.8.17",
+        "@types/ejs": "^3.1.5",
+        "@types/express": "^4.17.21",
+        "@types/jest": "^29.5.14",
+        "@types/jsonwebtoken": "^9.0.7",
+        "@types/mime-types": "^2.1.4",
+        "@types/multer": "^1.4.12",
+        "@types/node": "^22.10.2",
+        "@types/nodemailer": "^6.4.17",
+        "@types/prettier": "^3.0.0",
+        "@types/supertest": "^7.2.0",
+        "@typescript-eslint/eslint-plugin": "^8.13.0",
+        "@typescript-eslint/parser": "^8.13.0",
+        "aws-sdk-client-mock": "^4.1.0",
+        "copyfiles": "^2.4.1",
+        "csv-parser": "^3.1.0",
+        "eslint": "^9.14.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "husky": "^9.1.7",
+        "jest": "^29.7.0",
+        "lint-staged": "^15.2.10",
+        "nodemon": "^3.1.9",
+        "prettier": "^3.3.3",
+        "rimraf": "^6.0.1",
+        "sqlite3": "^5.1.7",
+        "supertest": "^7.2.2",
+        "ts-jest": "^29.2.5",
+        "ts-node": "^10.9.2",
+        "tsc-alias": "^1.8.11",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.6.3"
+    },
+    "dependencies": {
+        "axios": "1.12.0",
+        "bcrypt": "^5.1.1",
+        "cors": "^2.8.5",
+        "dayjs": "^1.11.13",
+        "dotenv": "^16.4.5",
+        "ejs": "^3.1.10",
+        "express": "^4.21.1",
+        "express-async-errors": "^3.1.1",
+        "helmet": "^8.0.0",
+        "ioredis": "^5.4.1",
+        "multer": "2.0.2",
+        "socket.io": "^4.8.1",
+        "socket.io-client": "^4.8.1",
+        "typeorm": "0.3.26",
+        "winston": "^3.15.0"
+    },
+    "husky": {
+        "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+        "**/*.{ts,js}": [
+            "prettier --write",
+            "eslint **/*.{ts,js}"
+        ]
+    }
+}
