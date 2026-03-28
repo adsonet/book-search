@@ -2,15 +2,11 @@
 
 ## Overview
 
-The **Book Search API** is a modular backend service designed to fetch, normalize, and aggregate book data from multiple third-party providers. This service abstracts away provider-specific API differences, supports multiple query types (author, publisher, year), and returns a consistent JSON structure.  
-
-The solution is designed for **scalability, maintainability, and testability**, following modern engineering practices and production-ready patterns.
-
----
+The Book Search API has been re-written as a modular backend service for fetching and normalizing book data from multiple third-party providers. The solution is designed for scalability, maintainability, and testability, following modern engineering practices and production-ready patterns.
 
 ## Architectural Design
 
-The Book Search API has been re-written as a modular backend service for fetching and normalizing book data from multiple third-party providers. This service abstracts away provider-specific API differences, supports multiple query types (author, publisher, year), and returns a consistent JSON structure. Each provider implements a common interface and handles its own query construction and response mapping (JSON or XML), enabling loose coupling and easy extensibility.
+This service abstracts away provider-specific API differences, supports multiple query types (author, publisher, year), and returns a consistent JSON structure. Each provider implements a common interface and handles its own query construction and response mapping (JSON or XML), enabling loose coupling and easy extensibility.
 
 A unified parser layer was implemented to ensure all provider responses are converted into a consistent JSON format, so consumers would never need to handle provider-specific formats. The BookSearchApiClientService now acts as a Facade, exposing simple methods like getBooksByAuthor, getBooksByPublisher, and getBooksByYear while hiding the underlying complexity.
 
